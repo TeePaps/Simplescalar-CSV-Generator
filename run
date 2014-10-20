@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# -----------------
+# Functions
+# -----------------
+
+# Help function
+show_help() {
+  cat README.md
+}
+
+# ------------------
+# Start of script
+# ------------------
+
+BENCHMARKS_ROOT=$PWD
+
+# A Posix varable. Reset it here in case it was used before
+OPTIND=1
+#output_filename="output.csv"
+output_filename=""
+data_to_collect=""
+
+while getopts "h?f:d:" opt; do
+  case "$opt" in
+    h|\?)
+      show_help
+      exit 0
+      ;;
+    f) output_filename=$OPTARG
+      ;;
+    d) data_to_collect=$OPTARG
+      ;;
+  esac
+done
+
+shift $((OPTIND-1))
+[ "$1" = "--" ] && shift
+#echo "verbose=$verbose, output_file=$output_filename, data=$data_to_collect, Leftovers: $@"
+
+
+rootdir=$@
+echo $rootdir
+if [ ! -d "$rootdir" ]; then
+  echo FATAL: No source directory found or specified
+  exit 1
+fi
+
+pushd $rootdir > /dev/null
+
+. $BENCHMARKS_ROOT/bin/run-tests.sh
+. $BENCHMARKS_ROOT/bin/collect-all-outputs.sh $data_to_collect > $output_filename
+
+popd > /dev/null
+

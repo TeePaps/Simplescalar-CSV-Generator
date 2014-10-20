@@ -1,0 +1,24 @@
+bzip2
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
+equake
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
+hmmer
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
+mcf
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
+milc
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
+sjeng
+config_file, sim_IPC, il1.hits
+*.cfg.out
+
