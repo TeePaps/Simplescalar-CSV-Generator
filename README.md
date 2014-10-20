@@ -7,6 +7,12 @@ export SIMPLESIM=/home/software/simplesim
 export PATH=$SIMPLESIM/simplesim-3.0:$PATH
 ```
 
+Or if you are using tsch (psu ladon server default), set them as so:
+```
+setenv SIMPLESIM=/home/software/simplesim
+setenv PATH $PATH\:$SIMPLESIM/simplesim-3.0:$PATH
+```
+
 #### Specify:
   * -f -- the collected results file name (csv output)
   * -d -- string of space-separated data values to collect (i.e. "sim_IPC il1.hits")
